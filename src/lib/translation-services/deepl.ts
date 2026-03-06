@@ -35,10 +35,8 @@ export default async function translate(
     params.set('formality', options.deeplOptions.formality)
   }
 
-  const apiUrl = new URL(`/deepl/v2/translate`) // Netlify proxy to deepl
-
   // Make the API request
-  const request = await fetch(apiUrl, {
+  const request = await fetch('/deepl/v2/translate', {
     method: 'POST', // Note: DeepL will deprecate GET requests from March 2025: https://developers.deepl.com/docs/resources/breaking-changes-change-notices/march-2025-deprecating-get-requests-to-translate-and-authenticating-with-auth_key
     headers: {
       Authorization: `DeepL-Auth-Key ${options.apiKey}`,
