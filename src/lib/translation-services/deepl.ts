@@ -39,14 +39,7 @@ export default async function translate(
     params.set('formality', options.deeplOptions.formality)
   }
 
-  const apiVersion =
-    options.translationService === TranslationService.deeplFree
-      ? 'api-free'
-      : 'api'
-
-  const apiUrl = new URL(
-    `https://cors-anywhere.com/https://${apiVersion}.deepl.com/v2/translate`,
-  ) // DeepL API endpoint over CORS Anywhere
+  const apiUrl = new URL(`/deepl/v2/translate`) // Netlify proxy to deepl
 
   // Make the API request
   const request = await fetch(apiUrl, {
