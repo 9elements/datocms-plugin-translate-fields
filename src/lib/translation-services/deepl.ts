@@ -44,8 +44,9 @@ export default async function translate(
       ? 'api-free'
       : 'api'
 
-  const apiUrl = new URL('https://cors-proxy.datocms.com') // DatoCMS-provided CORS proxy
-  apiUrl.searchParams.set('url', `https://${apiVersion}.deepl.com/v2/translate`) // Actual DeepL API endpoint
+  const apiUrl = new URL(
+    `https://cors-anywhere.com/https://${apiVersion}.deepl.com/v2/translate`,
+  ) // DeepL API endpoint over CORS Anywhere
 
   // Make the API request
   const request = await fetch(apiUrl, {
