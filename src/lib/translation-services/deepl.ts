@@ -1,8 +1,4 @@
-import {
-  DeeplFormalityLevel,
-  TranslationOptions,
-  TranslationService,
-} from '../types'
+import { DeeplFormalityLevel, TranslationOptions } from '../types'
 
 export default async function translate(
   string: string,
