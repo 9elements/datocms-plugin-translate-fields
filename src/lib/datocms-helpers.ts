@@ -1,6 +1,6 @@
 import { PathType } from './types'
 import { isJsonString } from './helpers'
-import { markdownRegexesArray, htmlRegex } from './regexes'
+import { markdownRegexesArray, htmlRegex, dateStringRegex } from './regexes'
 
 export const pathTypeIsObject = [
   PathType.structured_text,
@@ -143,6 +143,8 @@ export function getValueType(
 
   if (
     pathTypeIsObject.indexOf(currentType) === -1 &&
+    typeof value === 'string' &&
+    dateStringRegex.test(value.trim()) &&
     !isNaN(Date.parse(value))
   ) {
     return PathType.date

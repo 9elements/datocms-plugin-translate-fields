@@ -44,3 +44,9 @@ export const markdownRegexesArray = [
 
 export const htmlRegex =
   /<(?=.*? .*?\/ ?>|br|hr|input|!--|wbr)[a-z]+.*?>|<([a-z]+).*?<\/\1>/i
+
+// Matches whole-string date values only (ISO 8601 date/datetime, or
+// dd.mm.yyyy / dd/mm/yyyy). Prevents free text that merely contains a year
+// (e.g. "Bewerbung im Frühjahr 2027") from being misdetected as a date.
+export const dateStringRegex =
+  /^(\d{4}-\d{2}-\d{2}([T ]\d{2}:\d{2}(:\d{2})?(\.\d+)?(Z|[+-]\d{2}:?\d{2})?)?|\d{1,2}[./]\d{1,2}[./]\d{2,4})$/
